@@ -11,7 +11,7 @@ app.get("/membership", async (req, res) => {
   if (meetups) {
     try {
       let result = await fetchMemberships(meetups.split(","));
-      res.send(flatten(result));
+      res.send({ items: flatten(result) });
     } catch (e) {
       res.status(500).send(e);
     }
